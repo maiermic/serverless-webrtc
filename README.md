@@ -1,30 +1,21 @@
-### serverless-webrtc
----
-* Is it possible to create a p2p connection without a signalling server? 
-Yes!
-* How?? copy paste the SDPs between local and remote that's it!
-* Are you kidding?? Nope, Please open `webrtc-noserver.html` in a localhost and go through the steps. 
-* This Serverless webRTC concept is only for learning javascript webRTC APIs
+# Serverless WebRTC
+To establish a P2P connection without a signalling server you have to exchange the SDPs between your clients (local and remote). Try it out. Open the [demo](https://maiermic.github.io/serverless-webrtc/webrtc-noserver.html) in two tabs or two different devices, lets say client **A** and client **B**.
+1. Client **A**
+    - click on `createOffer`
+    - copy the generated SDP and send it to **B** (e.g. using email)
+2. Client **B**
+    - paste SDP of **A** (e.g. received by email) in (**B**'s) text box `Remote`
+    - click `answer` button (this will generate another SDP and add it to text box `Local`)
+    - copy the generated SDP (of text box `Local`) and send it to **A** (e.g. using email)
+3. Client **A**
+    - paste SDP of **B** (e.g. received by email) in (**A**'s) text box `Remote`
+    - click `answer` button
+Now you should be able to see P2P connection working.
 
-### setup
-on macOS/Linux just clone this repo
-
-`
-cd serverless-webrtc
-
-python -m SimpleHTTPServer 8080
-
-http://localhost:8080/webrtc-noserver.html
-`
-### Usage
-* open this url in two tabs lets say A and B.
-* click on createOffer in A, copy paste the sdp in B's Remote text box, click "answer" button and this will add sdp to local text box.
-* Of B's local text box, copy paste sdp text in to A's Remote text box and click on "answer" button, then you should be able to see p2p connection working
-
-### features
+## features
 * peer to peer video calling
 * chat
 * file transfer
 
-### Snap
+## Snap
 ![serverless-webrtc](snap.png)
